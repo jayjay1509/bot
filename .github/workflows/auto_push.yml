@@ -1,0 +1,29 @@
+name: Auto Push
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Exécuter tous les jours à minuit
+
+  workflow_dispatch:  # Permet de le lancer manuellement si besoin
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    
+    - name: Configurer Git
+      run: |
+        git config --global user.name "AutoBot"
+        git config --global user.email "your-email@example.com"
+
+    - name: Installer Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Exécuter le script
+      run: |
+        python auto_push.py
