@@ -3,33 +3,28 @@ name: Auto Push
 on:
   schedule:
     - cron: '0 0 * * *'  # Exécuter tous les jours à minuit
-  workflow_dispatch:      # Permet de lancer manuellement si besoin
+  workflow_dispatch:  # Permet de le lancer manuellement si besoin
 
 jobs:
   push:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
-    
+
     - name: Configurer Git
       run: |
-        git config --global user.name "jayson"
-        git config --global user.email "jayson.malet@me.com"
+        git config --global user.name "AutoBot"
+        git config --global user.email "your-email@example.com"
 
-    - name: Installer Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-
-    - name: Exécuter le script
+    - name: Mettre à jour le dépôt
       run: |
-        python auto_push.py
+        git pull origin main --rebase
 
-    - name: Push to GitHub
-    run: |
-        git remote set-url origin https://x-access-token:${{ secrets.MY_PAT }}@github.com/jayjay1509/bot.git
+    - name: Push au dépôt
+      run: |
+        git remote set-url origin https://x-access-token:${{ secrets.TOKEN }}@github.com/jayjay1509/bot.git
         git add .
         git commit -m "Automated commit"
-        git push
+        git push origin main
