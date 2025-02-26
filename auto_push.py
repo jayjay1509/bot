@@ -27,15 +27,16 @@ time_to_wait = (target_time - now).total_seconds()
 print(f"Attente jusqu'à {target_time.strftime('%H:%M:%S')}...")
 time.sleep(time_to_wait)
 
-# Après avoir attendu, exécuter le code de modification du fichier
-file_path = "fichier_a_modifier.txt"
+# Une fois l'heure cible atteinte, exécuter le code de modification du fichier et du commit
+file_path = "raport.txt"
 
-# Simuler un changement (par exemple, ajouter la date)
+# Simuler un changement (par exemple, ajouter la date et l'heure du commit)
 with open(file_path, "a") as file:
-    file.write(f"\nDernier push à {datetime.datetime.now()}\n")
+    commit_time = datetime.datetime.now()
+    file.write(f"\nDernier commit effectué à {commit_time.strftime('%Y-%m-%d %H:%M:%S')}\n")
 
 # Commandes Git pour commit et push
 os.system("git add .")
 os.system('git commit -m "Auto commit du jour 🚀"')
 
-print("Fichier mis à jour et commit effectué.")
+print(f"Fichier mis à jour et commit effectué à {commit_time.strftime('%Y-%m-%d %H:%M:%S')}")

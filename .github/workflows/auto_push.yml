@@ -26,5 +26,5 @@ jobs:
       run: |
         git remote set-url origin https://x-access-token:${{ secrets.TOKEN }}@github.com/jayjay1509/bot.git
         git add .
-        git commit -m "Automated commit"
+        git commit  --allow-empty -m "Automated commit"
         git push origin main
