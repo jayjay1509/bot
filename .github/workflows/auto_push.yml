@@ -19,8 +19,8 @@ jobs:
 
     - name: Configurer Git
       run: |
-        git config --global user.name "AutoBot"
-        git config --global user.email "your-email@example.com"
+        git config --global user.name "jayjay1509"
+        git config --global user.email "jayson.malet@me.com"
 
     - name: Mettre à jour le dépôt
       run: |
