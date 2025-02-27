@@ -2,7 +2,11 @@ name: Auto Push
 
 on:
   schedule:
-    - cron: '30 14 * * *'  # Exécuter tous les jours à minuit
+    - cron: '30 14 * * *'  # Exécuter tous les jours à 14h30
+    - cron: '0 10 * * *'   # Exécuter tous les jours à 10h00
+    - cron: '0 18 * * *'   # Exécuter tous les jours à 18h00
+    - cron: '0 0 * * *'   # Exécuter tous les jours à 18h00
+    - cron: '0 21 * * *'   # Exécuter tous les jours à 18h00
   workflow_dispatch:  # Permet de le lancer manuellement si besoin
 
 jobs:
